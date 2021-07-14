@@ -23,4 +23,4 @@ jobs:
           mkdir -p content
       - name: convert md
         run: |
-          find ./${{ env.INDIR }} -type f -iname '*.md' -exec sh -c 'echo ${0}' {} \;
+          find ${{ env.INDIR }}/ -type f -iname '*.md' -exec sh -c 'echo ${0%.md}.docx' {} \;
