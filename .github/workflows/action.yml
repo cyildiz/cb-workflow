@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://pandoc/core:2.9
-      options: --entrypoint=sh
+      #options: --entrypoint=sh
     steps:
       - uses: actions/checkout@v2
       - name: prepare output directories
