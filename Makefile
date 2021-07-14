@@ -1,5 +1,5 @@
 INDIR := input
-OUTDIR := contend
+OUTDIR := content
 
 # Find all markdown files in the input directory
 SOURCES := $(shell find $(INDIR)/ -type f -name '*.md')
