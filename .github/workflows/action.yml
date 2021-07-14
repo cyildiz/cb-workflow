@@ -32,11 +32,9 @@ jobs:
 
       - name: Build
         run: hugo -s hugo --minify
-        
-      - run: ls -al hugo
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./hugo/public
