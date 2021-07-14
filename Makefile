@@ -12,6 +12,6 @@ all: $(OUT)
 # Input-Output transformation with pandoc (markdown-to-markdown at the moment)
 $(OUT): $(OUTDIR)/%.md: $(INDIR)/%.md
 	mkdir -p $(shell dirname $@)
-	docker run --rm -v docker://pandoc/core:2.9 pandoc -o $@ $<
+	pandoc -o $@ $<
 
 .PHONY: all
