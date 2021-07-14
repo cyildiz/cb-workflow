@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch submodules (Hugo themes, pandoc)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - uses: r-lib/actions/setup-pandoc@v1
         with:
@@ -19,4 +22,4 @@ jobs:
       - name: convert md
         run: |
           make
-          ls -al content/
+          ls -al
