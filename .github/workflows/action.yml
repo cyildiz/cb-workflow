@@ -32,6 +32,13 @@ jobs:
 
       - name: Build
         run: hugo -s hugo --minify
+        
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: pandoc-output
+          path: ./hugo/content/
+          retention-days: 1
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
