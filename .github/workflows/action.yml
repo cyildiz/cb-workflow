@@ -22,4 +22,4 @@ jobs:
       - name: convert md
         run: |
           make
-          ls -al
+          ls -al content/
