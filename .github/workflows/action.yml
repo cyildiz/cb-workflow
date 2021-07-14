@@ -15,11 +15,28 @@ jobs:
           submodules: true  # Fetch submodules (Hugo themes, pandoc)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - uses: r-lib/actions/setup-pandoc@v1
+      - name: install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
         with:
           pandoc-version: '2.9' # The pandoc version to download (if necessary) and use.
           
-      - name: convert md
+      - name: run make
         run: |
           make
-          ls -al content/
+          
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
+
+      - name: Build
+        run: hugo -s hugo --minify
+        
+      - run: ls -al hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
