@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  INDIR: input
-  OUTDIR: content
+  INDIR: input/
+  OUTDIR: content/
 
 jobs:
   pandoc:
@@ -23,4 +23,4 @@ jobs:
           mkdir -p content
       - name: convert md
         run: |
-          find ${{ env.INDIR }}/ -type f -iname '*.md' -exec sh -c 'echo ${0%.md}.docx' {} \;
+          find ${{ env.INDIR }} -type f -iname '*.md' -exec sh -c 'echo ${0/${{ env.INDIR }}/${{ env.OUTDIR }}}' {} \;
