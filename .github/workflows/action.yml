@@ -6,21 +6,17 @@ on:
       - main  # Set a branch to deploy
   workflow_dispatch:
 
-env:
-  INDIR: input
-  OUTDIR: content
-
 jobs:
   pandoc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: prepare output directories
-        run: |
-          mkdir -p content
+
       - uses: r-lib/actions/setup-pandoc@v1
         with:
           pandoc-version: '2.9' # The pandoc version to download (if necessary) and use.
+          
       - name: convert md
         run: |
           make
+          ls -al content/
