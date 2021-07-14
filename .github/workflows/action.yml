@@ -13,8 +13,8 @@ env:
 jobs:
   pandoc:
     runs-on: ubuntu-latest
-    container:
-      image: docker://pandoc/core:2.9
+    #container:
+      #image: docker://pandoc/core:2.9
       #options: --entrypoint=sh
     steps:
       - uses: actions/checkout@v2
@@ -23,5 +23,6 @@ jobs:
           mkdir -p content
       - name: convert md
         run: |
+          ls -al
           make
           ls -al
