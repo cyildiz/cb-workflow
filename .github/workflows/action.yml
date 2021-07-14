@@ -18,7 +18,9 @@ jobs:
       - name: prepare output directories
         run: |
           mkdir -p content
-      - uses: docker://pandoc/latex:2.9
+      - uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.9' # The pandoc version to download (if necessary) and use.
       - name: convert md
         run: |
           make
