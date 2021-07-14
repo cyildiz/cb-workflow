@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  INDIR: input/
-  OUTDIR: content/
+  INDIR: input
+  OUTDIR: content
 
 jobs:
   pandoc:
