@@ -1,0 +1,22 @@
+baseURL = "https://jposselt.github.io/cb-workflow/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+
+# Change the default theme to be use when building the site with Hugo
+theme = "hugo-theme-learn"
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Author of the site, will be used in meta information
+  author = "Jonas Posselt"
+  # Description of the site, will be used in meta information
+  description = "A test site using Hugo and hugo-theme-learn"
+  # Hide Next and Previous page buttons normally displayed full height beside content
+  disableNextPrev = true
+  # Order sections in menu by "weight" or "title". Default to "weight"
+  ordersectionsby = "weight"
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "blue"

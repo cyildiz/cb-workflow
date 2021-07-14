@@ -1,5 +1,5 @@
 INDIR := input
-OUTDIR := content
+OUTDIR := hugo/content
 
 # Find all markdown files in the input directory
 SOURCES := $(shell find $(INDIR)/ -type f -name '*.md')
