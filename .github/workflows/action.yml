@@ -6,13 +6,21 @@ on:
       - main  # Set a branch to deploy
   workflow_dispatch:
 
+env:
+  INDIR: input
+  OUTDIR: content
+
 jobs:
   pandoc:
     runs-on: ubuntu-latest
+    container:
+      image: docker://pandoc/core:2.9
+      options: --entrypoint=sh
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Transform
+      - name: prepare output directories
         run: |
-          make
-          ls -al contend
+          mkdir -p content
+      - name: convert md
+        run: |
+          find ./${{ env.INDIR }} -type f -iname '*.md' -exec sh -c 'echo ${0}' {} \;
