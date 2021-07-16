@@ -15,6 +15,6 @@ all: $(OUT)
 # Input-Output transformation with pandoc (markdown-to-markdown at the moment)
 $(OUT): $(OUTDIR)/%.md: $(INDIR)/%.md
 	mkdir -p $(shell dirname $@)
-	pandoc --wrap=preserve -o $@ $<
+	pandoc --wrap=preserve -s -o $@ $<
 
 .PHONY: all
