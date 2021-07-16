@@ -23,6 +23,7 @@ jobs:
       - name: run make
         run: |
           make
+          ls -al
           
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
