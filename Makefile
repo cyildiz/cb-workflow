@@ -5,10 +5,7 @@ INDIR := input
 OUTDIR := hugo/content
 
 # Run pandoc from docker image
-PANDOC := docker run --rm \
-	-v "$(INDIR):/$(INDIR):ro" \
-	-v "$(OUTDIR):/$(OUTDIR)"
-	pandoc/core:2.9
+PANDOC := docker run --rm -v "$(INDIR):/$(INDIR)" pandoc/core:2.9
 
 # Find all markdown files in the input directory
 SOURCES := $(shell find $(INDIR)/ -type f -name '*.md')
