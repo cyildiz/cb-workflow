@@ -4,17 +4,24 @@ INDIR := input
 ## Output directory
 OUTDIR := hugo/content
 
-# Find all markdown files in the input directory
+# Source files
 SOURCES := $(shell find $(INDIR)/ -type f -name '*.md')
-
 # Output file keep relative paths of input files
-OUT := $(patsubst $(INDIR)/%.md,$(OUTDIR)/%.md,$(SOURCES))
+OUT := $(patsubst $(INDIR)/%.md,$(OUTDIR)/%.md,$(SOURCES)) 
 
-all: $(OUT)
+# Image files
+IMAGES_IN := $(shell find $(INDIR)/ -type f -name '*.jpg')
+IMAGES_OUT := $(patsubst $(INDIR)/%,$(OUTDIR)/%,$(IMAGES_IN))
+
+all: $(OUT) $(IMAGES_OUT)
 
 # Input-Output transformation with pandoc (markdown-to-markdown at the moment)
 $(OUT): $(OUTDIR)/%.md: $(INDIR)/%.md
 	mkdir -p $(shell dirname $@)
 	pandoc --wrap=preserve -s -o $@ $<
+	
+$(IMAGES_OUT): $(OUTDIR)/%: $(INDIR)/%
+	mkdir -p $(shell dirname $@)
+	cp -f $< $@
 
 .PHONY: all

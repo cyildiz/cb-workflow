@@ -12,6 +12,7 @@ pre = "<b>X. </b>"
 
 Lorem Ipsum.
 
+## Math
 $E = m c^2$
 
 Statt $P(D_i=x|h) = \dfrac{|S_{D_i}(x) \cap S(h)|}{|S(h)|}$ nutze $P(D_i=x|h) = \dfrac{|S_{D_i}(x) \cap S(h)| + m \cdot p_i}{|S(h)| + m}$
@@ -23,3 +24,8 @@ $$
             &=& \operatorname{argmax}_{h \in H} [\log(P(h)) + \sum_i \log(P(D_i|h))]
     \end{array}
 $$
+
+## Images
+![Sky](./images/sky.jpg)
+
+{{< figure src="./images/sky.jpg" title="Sky" >}}
