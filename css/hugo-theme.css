@@ -1,7 +1,5 @@
 /* Insert here special css for hugo theme, on top of any other imported css */
 
-/* MathJax*/
-
 code.has-jax {
     -webkit-font-smoothing: antialiased;
     background: inherit !important;
