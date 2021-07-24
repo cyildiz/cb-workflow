@@ -28,4 +28,4 @@ $$
 ## Images
 ![Sky](./images/sky.jpg)
 
-{{< figure src="/basics/images/sky.jpg" title="Sky" >}}
+{{< figure src="basics/images/sky.jpg" title="Sky" >}}
