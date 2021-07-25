@@ -19,7 +19,7 @@ all: $(OUT) $(IMAGES_OUT)
 $(OUT): $(OUTDIR)/%.md: $(INDIR)/%.md
 	mkdir -p $(shell dirname $@)
 	echo "$(CURDIR)"
-	docker run --rm -v "$(CURDIR)":/pandoc pandoc/core:2.14 pandoc --wrap=preserve -s -o $@ $<
+	docker run --rm -v "$(CURDIR)":/pandoc pandoc/core:2.14 --wrap=preserve -s -o $@ $<
 #	pandoc --wrap=preserve -s -o $@ $<
 	
 $(IMAGES_OUT): $(OUTDIR)/%: $(INDIR)/%
