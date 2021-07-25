@@ -18,7 +18,9 @@ all: $(OUT) $(IMAGES_OUT)
 # Input-Output transformation with pandoc (markdown-to-markdown at the moment)
 $(OUT): $(OUTDIR)/%.md: $(INDIR)/%.md
 	mkdir -p $(shell dirname $@)
-	pandoc --wrap=preserve -s -o $@ $<
+	echo "$(CURDIR)"
+	docker run --rm -v "$(CURDIR)":/pandoc pandoc/core:2.14 pandoc --wrap=preserve -s -o $@ $<
+#	pandoc --wrap=preserve -s -o $@ $<
 	
 $(IMAGES_OUT): $(OUTDIR)/%: $(INDIR)/%
 	mkdir -p $(shell dirname $@)
