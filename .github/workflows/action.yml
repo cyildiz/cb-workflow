@@ -15,33 +15,33 @@ jobs:
           submodules: true  # Fetch submodules (Hugo themes, pandoc)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      #- name: install pandoc
-      #  uses: r-lib/actions/setup-pandoc@v1
-      #  with:
-      #    pandoc-version: '2.5' # The pandoc version to download (if necessary) and use.
+      - name: install pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.5' # The pandoc version to download (if necessary) and use.
           
       - name: run make
         run: |
           make
           
-      #- name: Setup Hugo
-      #  uses: peaceiris/actions-hugo@v2
-      #  with:
-      #    hugo-version: 'latest'
-      #    # extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
 
-      #- name: Build
-      #  run: hugo -s hugo --minify
+      - name: Build
+        run: hugo -s hugo --minify
         
-      #- name: 'Upload Artifact'
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: pandoc-output
-      #    path: ./hugo/content/
-      #    retention-days: 1
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: pandoc-output
+          path: ./hugo/content/
+          retention-days: 1
 
-      #- name: Deploy
-      #  uses: peaceiris/actions-gh-pages@v3
-      #  with:
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    publish_dir: ./hugo/public
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./hugo/public
