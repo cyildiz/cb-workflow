@@ -10,7 +10,7 @@ jobs:
   pandoc:
     runs-on: ubuntu-latest
     container:
-      image: pandoc/core:2.6
+      image: pandoc/core:2.14
     steps:
       - uses: actions/checkout@v2
         with:
