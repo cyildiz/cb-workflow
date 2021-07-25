@@ -9,21 +9,22 @@ on:
 jobs:
   pandoc:
     runs-on: ubuntu-latest
+    container:
+      image: pandoc:2.5
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true  # Fetch submodules (Hugo themes, pandoc)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - name: install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
-        with:
-          pandoc-version: '2.5' # The pandoc version to download (if necessary) and use.
+      #- name: install pandoc
+      #  uses: r-lib/actions/setup-pandoc@v1
+      #  with:
+      #    pandoc-version: '2.5' # The pandoc version to download (if necessary) and use.
           
       - name: run make
         run: |
           make
-          ls -al
           
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
