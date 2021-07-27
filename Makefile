@@ -1,3 +1,7 @@
+## Working directory
+## In case this doesn't work, set the path manually (use absolute paths).
+WORKDIR = $(CURDIR)
+
 ## Input directory
 INDIR := input
 
@@ -13,12 +17,19 @@ OUT := $(patsubst $(INDIR)/%.md,$(OUTDIR)/%.md,$(SOURCES))
 IMAGES_IN := $(shell find $(INDIR)/ -type f -name '*.jpg')
 IMAGES_OUT := $(patsubst $(INDIR)/%,$(OUTDIR)/%,$(IMAGES_IN))
 
+# Pandoc
+PANDOC := docker run --rm -v "$(WORKDIR)":/pandoc -w /pandoc pandoc/core:2.14
+
+# Pandoc arguments
+PANDOC_ARGS := --wrap=preserve -s
+
 all: $(OUT) $(IMAGES_OUT)
 
 # Input-Output transformation with pandoc (markdown-to-markdown at the moment)
 $(OUT): $(OUTDIR)/%.md: $(INDIR)/%.md
 	mkdir -p $(shell dirname $@)
-	pandoc --wrap=preserve -s -o $@ $<
+	$(PANDOC) $(PANDOC_ARGS) -o $@ $<
+#	pandoc --wrap=preserve -s -o $@ $<
 	
 $(IMAGES_OUT): $(OUTDIR)/%: $(INDIR)/%
 	mkdir -p $(shell dirname $@)
