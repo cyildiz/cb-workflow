@@ -14,11 +14,6 @@ jobs:
         with:
           submodules: true  # Fetch submodules (Hugo themes, pandoc)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-      - name: install pandoc
-        uses: r-lib/actions/setup-pandoc@v1
-        with:
-          pandoc-version: '2.5' # The pandoc version to download (if necessary) and use.
           
       - name: run make
         run: |
