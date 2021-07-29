@@ -27,3 +27,7 @@ $$
 
 ## Images
 ![Sky](./images/sky.jpg)
+
+## Data Table
+
+{{< schedule >}}

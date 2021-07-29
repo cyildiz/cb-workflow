@@ -1,0 +1,35 @@
+{{ $table := $.Site.Data.Schedule }}
+
+<table>
+  <thead>
+    <tr>
+      {{ range $table.headers }} <th>{{ . | humanize }}</th> {{ end }}
+    </tr>
+  </thead>
+  <tbody>
+	{{ range $table.rows }}
+      {{ $row := . }}
+      <tr>
+        <td>{{ $row.Woche }}</td>
+		<td>
+			<ul>
+			{{ range $row.Vorlesung}}
+				<li>
+					<a href={{ .link }}>{{ .name }}</a>
+				</li>
+			{{ end }}
+			</ul>
+		</td>
+		<td>
+			<ul>
+			{{ range $row.Praktikum}}
+				<li>
+					<a href={{ .link }}>{{ .name }}</a>
+				</li>
+			{{ end }}
+			</ul>
+		</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>

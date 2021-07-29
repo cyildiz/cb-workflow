@@ -1,0 +1,28 @@
+{
+	"headers": ["Woche", "Vorlesung", "Praktikum"],
+	"rows": [
+		{
+			"Woche": "46",
+			"Vorlesung": [
+				{
+					"name": "Reguläre Sprachen, Ausdrucksstärke",
+					"link": "https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_931822/Regulaere_Sprachen_Ausdrucksstaerke.pdf"
+				}
+			],
+			"Praktikum": [
+				{
+					"name": "Implementierungen",
+					"link": "https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_931822/cb_lexer.html"
+				},
+				{
+					"name": "Flex",
+					"link": "https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_931822/cb_flex.html"
+				},
+				{
+					"name": "ANTLR",
+					"link": "https://www.fh-bielefeld.de/elearning/data/FH-Bielefeld/lm_data/lm_931822/cb_antlr1.html"
+				}
+			]
+		}
+	]
+}
