@@ -1,0 +1,10 @@
+# baseURL: https://yoursite.example.com/
+footnoteReturnLinkContents: ↩
+params:
+  AuthorName: Canan Yildiz
+  GitHubUser: cyildiz
+  SidebarRecentLimit: 5
+  Subtitle: Testing
+permalinks:
+  posts: /:year/:month/:title/
+title: My Hugo Site
