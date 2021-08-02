@@ -8,3 +8,4 @@ params:
 permalinks:
   posts: /:year/:month/:title/
 title: My Hugo Site
+theme: https://github.com/theNewDynamic/gohugo-theme-ananke
