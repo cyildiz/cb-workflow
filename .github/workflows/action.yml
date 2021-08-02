@@ -1,24 +1,21 @@
-name: Action
+name: github pages
 
 on:
   push:
     branches:
       - main  # Set a branch to deploy
   workflow_dispatch:
+  pull_request:
 
 jobs:
-  pandoc:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true  # Fetch submodules (Hugo themes, pandoc)
+          submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-          
-      - name: run make
-        run: |
-          make
-          
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -26,17 +23,11 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo -s hugo --minify
-        
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: pandoc-output
-          path: ./hugo/content/
-          retention-days: 1
+        run: hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./hugo/public
+          publish_dir: ./public
